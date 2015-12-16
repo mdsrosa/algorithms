@@ -23,3 +23,13 @@ class LinkedList(object):
         node.set_next(self.head)
 
         self.head = node
+
+    def size(self):
+        size = 0
+        current_node = self.head
+
+        while current_node:
+            size += 1
+            current_node = current_node.get_next()
+
+        return size
