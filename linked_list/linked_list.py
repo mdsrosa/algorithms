@@ -17,3 +17,9 @@ class LinkedList(object):
 
     def __init__(self, head=None):
         self.head = head
+
+    def insert(self, data):
+        node = Node(data)
+        node.set_next(self.head)
+
+        self.head = node
