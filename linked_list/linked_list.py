@@ -6,8 +6,14 @@ class Node(object):
     def get_data(self):
         return self.data
 
-    def get_next_node(self):
+    def get_next(self):
         return self.next_node
 
     def set_next(self, new_next):
         self.next_node = new_next
+
+
+class LinkedList(object):
+
+    def __init__(self, head=None):
+        self.head = head
