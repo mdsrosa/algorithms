@@ -22,6 +22,21 @@ class LinkedListTest(unittest.TestCase):
         self.assertNotEqual(node, None)
         self.assertEqual(node.get_data(), "Superman")
 
+    def test_search_unexistent_item(self):
+        linked_list = LinkedList()
+
+        linked_list.insert("Spiderman")
+        linked_list.insert("Hulk")
+
+        with self.assertRaises(ValueError):
+            node_found = linked_list.search("Daredevil")
+
+    def test_search_in_empty_list(self):
+        linked_list = LinkedList()
+
+        with self.assertRaises(ValueError):
+            linked_list.search("Oliver Queen")
+
     def test_delete(self):
         linked_list = LinkedList()
 
@@ -35,6 +50,34 @@ class LinkedListTest(unittest.TestCase):
         linked_list.delete("R2-D2")
         self.assertEqual(linked_list.head.get_next(), None)
 
+    def test_delete_unexistent_item(self):
+        linked_list = LinkedList()
+
+        linked_list.insert("Flash")
+        linked_list.insert("Arrow")
+
+        with self.assertRaises(ValueError):
+            linked_list.delete("Harrison Wells")
+
+    def test_delete_empty_list(self):
+        linked_list = LinkedList()
+
+        with self.assertRaises(ValueError):
+            linked_list.delete("Barry Allen")
+
+    def test_delete_next_and_reassignment(self):
+        linked_list = LinkedList()
+
+        linked_list.insert("Tony Stark")
+        linked_list.insert("Thor")
+        linked_list.insert("Bruce Banner")
+        linked_list.insert("Clint Barton")
+
+        linked_list.delete("Clint Barton")
+        linked_list.delete("Thor")
+
+        self.assertEqual(linked_list.head.get_data(), "Bruce Banner")
+
     def test_insert_two_items(self):
         linked_list = LinkedList()
 
@@ -47,6 +90,18 @@ class LinkedListTest(unittest.TestCase):
 
         self.assertEqual(next_head.get_data(), "Ironman")
 
+    def test_next_node(self):
+        linked_list = LinkedList()
+
+        linked_list.insert("Clark Kent")
+        linked_list.insert("Bruce Wayne")
+        linked_list.insert("Peter Parker")
+
+        self.assertEqual(linked_list.head.get_data(), "Peter Parker")
+        next_head = linked_list.head.get_next()
+        self.assertEqual(next_head.get_data(), "Bruce Wayne")
+        last_node = next_head.get_next()
+        self.assertEqual(last_node.get_data(), "Clark Kent")
 
 if __name__ == '__main__':
     unittest.main()
