@@ -17,7 +17,7 @@ class LinkedListTest(unittest.TestCase):
         linked_list.insert("Superman")
         linked_list.insert("Deadpool")
 
-        node = self.second_linked_list.search("Superman")
+        node = linked_list.search("Superman")
 
         self.assertNotEqual(node, None)
         self.assertEqual(node.get_data(), "Superman")
@@ -29,11 +29,11 @@ class LinkedListTest(unittest.TestCase):
         linked_list.insert("R2-D2")
         linked_list.insert("Luke Skywalker")
 
-        self.second_linked_list.delete("Luke Skywalker")
-        self.assertEqual(self.second_linked_list.head.get_data(), "R2-D2")
+        linked_list.delete("Luke Skywalker")
+        self.assertEqual(linked_list.head.get_data(), "R2-D2")
 
-        self.second_linked_list.delete("R2-D2")
-        self.assertEqual(self.second_linked_list.head.get_next(), None)
+        linked_list.delete("R2-D2")
+        self.assertEqual(linked_list.head.get_next(), None)
 
     def test_insert_two_items(self):
         linked_list = LinkedList()
@@ -41,7 +41,7 @@ class LinkedListTest(unittest.TestCase):
         linked_list.insert("Ironman")
         linked_list.insert("Captain America")
 
-        self.assertEqual(linked_list.head.get_data(), "Captain American")
+        self.assertEqual(linked_list.head.get_data(), "Captain America")
 
         next_head = linked_list.head.get_next()
 
