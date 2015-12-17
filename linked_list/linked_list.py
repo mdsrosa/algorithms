@@ -33,3 +33,18 @@ class LinkedList(object):
             current_node = current_node.get_next()
 
         return size
+
+    def search(self, data):
+        current_node = self.head
+        found = False
+
+        while current_node and found is False:
+            if current_node.get_data() == data:
+                found = True
+            else:
+                current_node = current_node.get_next()
+
+            if current_node is None:
+                raise ValueError('Data is not on the list')
+
+            return current_node
