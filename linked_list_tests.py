@@ -7,6 +7,7 @@ class LinkedListTest(unittest.TestCase):
         self.linked_list = LinkedList()
         self.second_linked_list = LinkedList()
 
+        # for search and delete test
         self.second_linked_list.insert("Batman")
         self.second_linked_list.insert("Superman")
         self.second_linked_list.insert("Deadpool")
@@ -22,6 +23,13 @@ class LinkedListTest(unittest.TestCase):
 
         self.assertNotEqual(node, None)
         self.assertEqual(node.get_data(), "Superman")
+
+    def test_delete(self):
+        self.second_linked_list.delete("Deadpool")
+        self.assertEqual(self.second_linked_list.head.get_data(), "Superman")
+
+        self.second_linked_list.delete("Superman")
+        self.assertEqual(self.second_linked_list.head.get_next(), None)
 
 if __name__ == '__main__':
     unittest.main()
