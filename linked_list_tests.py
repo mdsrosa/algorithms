@@ -3,32 +3,36 @@ import unittest
 
 
 class LinkedListTest(unittest.TestCase):
-    def setUp(self):
-        self.linked_list = LinkedList()
-        self.second_linked_list = LinkedList()
-
-        # for search and delete test
-        self.second_linked_list.insert("Batman")
-        self.second_linked_list.insert("Superman")
-        self.second_linked_list.insert("Deadpool")
-
     def test_insert(self):
-        self.linked_list.insert("Matheus")
+        linked_list = LinkedList()
+        linked_list.insert("Matheus")
 
-        self.assertEqual(self.linked_list.head.get_data(), "Matheus")
-        self.assertEqual(self.linked_list.head.get_next(), None)
+        self.assertEqual(linked_list.head.get_data(), "Matheus")
+        self.assertEqual(linked_list.head.get_next(), None)
 
     def test_search(self):
+        linked_list = LinkedList()
+
+        linked_list.insert("Batman")
+        linked_list.insert("Superman")
+        linked_list.insert("Deadpool")
+
         node = self.second_linked_list.search("Superman")
 
         self.assertNotEqual(node, None)
         self.assertEqual(node.get_data(), "Superman")
 
     def test_delete(self):
-        self.second_linked_list.delete("Deadpool")
-        self.assertEqual(self.second_linked_list.head.get_data(), "Superman")
+        linked_list = LinkedList()
 
-        self.second_linked_list.delete("Superman")
+        linked_list.insert("Darth Vader")
+        linked_list.insert("R2-D2")
+        linked_list.insert("Luke Skywalker")
+
+        self.second_linked_list.delete("Luke Skywalker")
+        self.assertEqual(self.second_linked_list.head.get_data(), "R2-D2")
+
+        self.second_linked_list.delete("R2-D2")
         self.assertEqual(self.second_linked_list.head.get_next(), None)
 
 if __name__ == '__main__':
