@@ -44,7 +44,27 @@ class LinkedList(object):
             else:
                 current_node = current_node.get_next()
 
-            if current_node is None:
-                raise ValueError('Data is not on the list')
+        if current_node is None:
+            raise ValueError('Data not found.')
 
-            return current_node
+        return current_node
+
+    def delete(self, data):
+        current_node = self.head
+        previous_node = None
+        found = False
+
+        while current_node and found is False:
+            if current_node.get_data() == data:
+                found = True
+            else:
+                previous_node = current_node
+                current_node = current_node.get_next()
+
+        if current_node is None:
+            raise ValueError('Data not found.')
+
+        if previous_node is None:
+            self.head = current_node.get_next()
+        else:
+            previous_node.set_next(current_node.get_next())
