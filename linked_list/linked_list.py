@@ -68,3 +68,13 @@ class LinkedList(object):
             self.head = current_node.get_next()
         else:
             previous_node.set_next(current_node.get_next())
+
+    def show(self):
+        current_node = self.head
+        nodes = []
+
+        while current_node:
+            nodes.append(current_node.get_data())
+            current_node = current_node.get_next()
+
+        return " => ".join(nodes)

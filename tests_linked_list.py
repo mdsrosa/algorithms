@@ -103,5 +103,16 @@ class LinkedListTest(unittest.TestCase):
         last_node = next_head.get_next()
         self.assertEqual(last_node.get_data(), "Clark Kent")
 
+    def test_show(self):
+        linked_list = LinkedList()
+
+        linked_list.insert("Aquaman")
+        linked_list.insert("Wonder Woman")
+        linked_list.insert("Green Lantern")
+
+        expected = "Green Lantern => Wonder Woman => Aquaman"
+
+        self.assertEqual(linked_list.show(), expected)
+
 if __name__ == '__main__':
     unittest.main()
