@@ -15,7 +15,13 @@ class LinkedListTest(unittest.TestCase):
         self.linked_list.insert("Matheus")
 
         self.assertEqual(self.linked_list.head.get_data(), "Matheus")
-        self.assertEqual(self.linked_list.head.get_next_node(), None)
+        self.assertEqual(self.linked_list.head.get_next(), None)
+
+    def test_search(self):
+        node = self.second_linked_list.search("Superman")
+
+        self.assertNotEqual(node, None)
+        self.assertEqual(node.get_data(), "Superman")
 
 if __name__ == '__main__':
     unittest.main()
