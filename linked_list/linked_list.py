@@ -1,30 +1,70 @@
+"""
+    linked_list.py
+    Implements a Linked List.
+"""
+
 class Node(object):
-    def __init__(self, data=None, next_node=None):
+    """
+    This class represents a node in the linked list
+    """
+    def __init__(self, data=None, node=None):
         self.data = data
-        self.next_node = next_node
+        self.next = node
 
     def get_data(self):
+        """
+        Returns the node's data
+        """
         return self.data
 
     def get_next(self):
-        return self.next_node
+        """
+        Return the next node
+        """
+        return self.next
 
-    def set_next(self, new_next):
-        self.next_node = new_next
+    def set_next(self, node):
+        """
+        Sets the next node
+        """
+        self.next = node
 
 
 class LinkedList(object):
+    """
+    Class that implements a linked list
+    """
 
     def __init__(self, head=None):
         self.head = head
 
     def insert(self, data):
+        """
+        Insert data at the beginning of the linked list
+        """
         node = Node(data)
         node.set_next(self.head)
 
         self.head = node
 
+    def insert_at_tail(self, data):
+        """
+        Insert data at the end of the linked list
+        """
+        if self.head is None:
+            self.insert(data)
+        else:
+            node = self.head
+
+            while node.get_next():
+                node = node.get_next()
+
+            node.set_next(Node(data))
+
     def size(self):
+        """
+        Returns the size of the linked list
+        """
         size = 0
         current_node = self.head
 
@@ -35,6 +75,9 @@ class LinkedList(object):
         return size
 
     def search(self, data):
+        """
+        Search for data in the linked list
+        """
         current_node = self.head
         found = False
 
@@ -50,6 +93,9 @@ class LinkedList(object):
         return current_node
 
     def delete(self, data):
+        """
+        Deletes a node from the linked list
+        """
         current_node = self.head
         previous_node = None
         found = False
@@ -70,6 +116,9 @@ class LinkedList(object):
             previous_node.set_next(current_node.get_next())
 
     def show(self):
+        """
+        Prints the linked list
+        """
         current_node = self.head
         nodes = []
 
@@ -77,4 +126,4 @@ class LinkedList(object):
             nodes.append(current_node.get_data())
             current_node = current_node.get_next()
 
-        return " => ".join(nodes)
+        return " => ".join(map(str, nodes))
