@@ -90,6 +90,18 @@ class LinkedListTest(unittest.TestCase):
 
         self.assertEqual(next_head.get_data(), "Ironman")
 
+    def test_insert_at_tail(self):
+        linked_list = LinkedList()
+
+        linked_list.insert_at_tail("Deadpool")
+        linked_list.insert_at_tail("Green Lantern")
+
+        self.assertEqual(linked_list.head.get_data(), "Deadpool")
+
+        next_node = linked_list.head.get_next()
+
+        self.assertEqual(next_node.get_data(), "Green Lantern")
+
     def test_next_node(self):
         linked_list = LinkedList()
 
